@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <title>Employee Service UI</title>
+</head>
+<body>
+  <h1>Welcome to Employee Service</h1>
+
+  <button onclick="fetchEmployees()">Fetch Employees</button>
+  <ul id="employees-list"></ul>
+
+  <button onclick="fetchDepartments()">Fetch Departments</button>
+  <ul id="departments-list"></ul>
+
+  <button onclick="fetchProjects()">Fetch Projects</button>
+  <ul id="projects-list"></ul>
+
+  <button onclick="fetchManagersWithProjects()">Fetch Managers with Projects</button>
+  <ul id="managers-projects-list"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>

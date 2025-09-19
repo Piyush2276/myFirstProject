@@ -13,7 +13,7 @@ POST http://localhost:4004/odata/v4/employeeService/Departments
 Content-Type: application/json
 
 {
-  "name": "Developer",
+  "name": "React Developer",
   "division_ID": "11111111-1111-1111-1111-111111111111"
 }
 
@@ -24,11 +24,107 @@ Content-Type: application/json
 {
   "name": "rahul",
   "email": "rahul123@gmail.com",
-  "phone":"2222222222",
-  "department_ID":"3bc717de-c2c5-40d2-bc9a-e442f249792c",
-  "division_ID": "11111111-1111-1111-1111-111111111111"
+  "phone":"+91-2222222222",
+  "department_ID":"d1fd23df-0d75-4243-8b1a-4ab048346f67",
+  "division_ID": "11111111-1111-1111-1111-111111111111",
+  "address":{
+  "city":"ramgarh",
+  "state":"jharkhand"
+  }
 }
+
+### POST employee
+POST http://localhost:4004/odata/v4/employeeService/Employees
+Content-Type: application/json
+
+{
+  "name": "raj",
+  "email": "raj1232@gmail.com",
+  "phone":"+91-1111111111",
+  "department_ID":"d1fd23df-0d75-4243-8b1a-4ab048346f67",
+  "division_ID": "11111111-1111-1111-1111-111111111111",
+  "manager_ID":"a936d590-680b-4543-a498-3e6999fc9216",
+  "project_ID":"2f0c19a2-02f3-41a0-80bb-6cbcf0280f06",
+  "address":{
+  "city":"ramgarh",
+  "state":"jharkhand"
+  }
+
+}
+
+### delete employess 
+DELETE http://localhost:4004/odata/v4/employeeService/Employees('7a599ba3-cbb2-46b8-9c93-95f33a314aef')
 
 
 ### delete department
-DELETE http://localhost:4004/odata/v4/employeeService/Departments('3bc717de-c2c5-40d2-bc9a-e442f249792c')
+DELETE http://localhost:4004/odata/v4/employeeService/Departments('08d0a26f-ffca-409c-8cf2-7208da450632')
+
+### POST Address
+POST http://localhost:4004/odata/v4/employeeService/Address
+Content-Type: application/json
+
+{
+  "city":"ramgarh",
+  "state":"jharkhand",
+  "employee_ID":"f2d3424a-6ad2-46ac-a8c2-5ef64b6022ea"
+
+}
+
+### to see employee full details
+GET http://localhost:4004/odata/v4/employeeService/Employees?$expand=address,department,division
+
+### delete specific employee
+DELETE http://localhost:4004/odata/v4/employeeService/Employees('21473557-4ca3-47b5-8a49-4f64e3247894')
+
+### check address with employee_ID
+GET http://localhost:4004/odata/v4/employeeService/Address('21473557-4ca3-47b5-8a49-4f64e3247894')
+
+### POST Project
+POST http://localhost:4004/odata/v4/employeeService/Projects
+Content-Type: application/json
+
+{
+  "name":"chatting app",
+  "department_ID":"aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+  "division_ID":"11111111-1111-1111-1111-111111111111",
+  "manager_ID":"e1111111-1111-1111-1111-111111111111"
+
+}
+### delete project
+DELETE http://localhost:4004/odata/v4/employeeService/Projects('2f0c19a2-02f3-41a0-80bb-6cbcf0280f06')
+
+### check project department and division
+GET http://localhost:4004/odata/v4/employeeService/Projects?$expand=department,division
+
+### POST employee new phone no.
+POST http://localhost:4004/odata/v4/employeeService/updateEmployeePhone
+Content-Type: application/json
+
+{
+  "employeeID": "58c2ee8c-ee13-4f1d-92ba-8fb236e08e00",
+  "newPhone": "+91-9876543210"
+}
+
+### get all employees under departmentID
+GET http://localhost:4004/odata/v4/employeeService/getEmployeesByDepartment(departmentID=bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb)
+
+### Fetch these employee name , email , dep name , div name, manager name in a single call.
+GET http://localhost:4004/odata/v4/employeeService/Employees?$expand=department($select=name),division($select=name),manager($select=name)&$select=name,email
+
+### employeeView only specific field
+GET http://localhost:4004/odata/v4/employeeService/EmployeeView
+
+### list of employees for each project
+GET http://localhost:4004/odata/v4/employeeService/Projects?$expand=employees($select=name)
+
+### list of employees for each project
+GET http://localhost:4004/odata/v4/employeeService/ProjectsPerEmployee
+
+### POST employee new phone no.
+POST http://localhost:4004/odata/v4/employeeService/ProjectEmployee
+Content-Type: application/json
+
+{
+  "project_ID":"pppppppp-pppp-pppp-pppp-pppppppppppp",
+  "employee_ID":"e2222222-2222-2222-2222-222222222222"
+}

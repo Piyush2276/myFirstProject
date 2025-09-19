@@ -35,9 +35,9 @@ modules:
     requires:
       - name: myFirstProject-db
 
-  - name: myFirstProject
+  - name: myFirstProjectAppRouter
     type: approuter.nodejs
-    path: app/router
+    path: approuter
     parameters:
       keep-existing-routes: true
       disk-quota: 256M
